@@ -2,94 +2,100 @@
 
 class Student
 {
-    private string name;
+    private string _name;
     public int Age { get; set; }
 
-    // Статическое поле
-    public static int TotalStudents;
+    // Статическое поле для подсчёта количества студентов
+    public static int StudentCount { get; private set; }
 
-    // Статическое свойство
-    public static string University { get; set; }
-
-    // Статический метод
-    public static void DisplayTotalStudents()
-    {
-        Console.WriteLine($"Всего студентов: {TotalStudents}");
-    }
+    // Статическое свойство для хранения имени университета
+    public static string UniversityName { get; set; }
 
     // Статический конструктор
     static Student()
     {
-        University = "СГУ";
-        TotalStudents = 0;
+        UniversityName = "СГУ";
+        StudentCount = 0;
     }
 
-    public Student(string name, int age)
+    // Конструктор с двумя параметрами
+    public Student(string name, int Age)
     {
-        this.name = name;
-        this.Age = age;
-        TotalStudents++; // Увеличение количества студентов при создании объекта
+        this._name = name;
+        this.Age = Age;
+        StudentCount++; // Увеличиваем счётчик при создании нового студента
     }
 
+    // Конструктор с одним параметром
     public Student(string name)
     {
-        this.name = name;
+        this._name = name;
         Age = 0;
-        TotalStudents++; // Увеличение количества студентов при создании объекта
+        StudentCount++; // Увеличиваем счётчик
     }
 
-    public void WriteInfo()
+    // Метод WriteInfo теперь возвращает строку
+    public string WriteInfo()
     {
-        Console.WriteLine($"Студент {name}, возраст {Age}, университет: {University}");
+        return $"Студент {_name}, возраст {Age}, школа {UniversityName}";
     }
 
+    // Метод BecomeOlder увеличивает возраст на 1
     public void BecomeOlder()
     {
-        Console.WriteLine($"Студент {name}, возраст {Age + 1}");
+        Age++;
+        Console.WriteLine("Студент " + _name + ", возраст " + Age);
     }
 
     public string GetName()
     {
-        return name;
+        return _name;
     }
 
-    public void SetName(string _name)
+    public void SetName(string name)
     {
-        this.name = _name;
+        this._name = name;
     }
 
-    // Тестирование программы
+    // Статический метод для вывода общего количества студентов
+    public static void ShowStudentCount()
+    {
+        Console.WriteLine($"Общее количество студентов: {StudentCount}");
+    }
+
     static void Main(string[] args)
     {
-        // Создание объектов разными способами
+        // Создаём три объекта класса Student различными способами
         Student Oleg = new("Олег", 25);
         Student Venya = new("Веня");
-        Student Anonymous = new Student("Неизвестный");
+        Student Anna = new("Анна", 19);
 
-        // Использование методов
-        Oleg.WriteInfo();
+        // Демонстрация работы WriteInfo и BecomeOlder
+        Console.WriteLine(Oleg.WriteInfo());
         Oleg.BecomeOlder();
 
-        Venya.WriteInfo();
-        Oleg.SetName("Рома");
-        Oleg.BecomeOlder();
+        Console.WriteLine(Venya.WriteInfo());
+        Venya.BecomeOlder();
 
-        // Использование статического метода
-        Student.DisplayTotalStudents();
+        Console.WriteLine(Anna.WriteInfo());
 
-        // Создание статического класса и взаимодействие
-        StudentHelper.GraduationMessage(Oleg);
-        StudentHelper.GraduationMessage(Venya);
+        // Демонстрация работы статического метода
+        Student.ShowStudentCount();
 
-        Console.ReadLine();
+        // Демонстрация работы геттера GetName
+        Console.WriteLine("Имя студента: " + Oleg.GetName());
+
+        // Использование статического класса для работы с учениками
+        StudentHelper.ShowSchoolName();
     }
 }
 
-// Статический класс
+// Статический класс для работы со студентами
 static class StudentHelper
 {
-    public static void GraduationMessage(Student student)
+    // Статический метод для вывода имени школы
+    public static void ShowSchoolName()
     {
-        Console.WriteLine($"{student.GetName()} закончил университет {Student.University}.");
+        Console.WriteLine($"Школа: {Student.UniversityName}");
     }
 }
