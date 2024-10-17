@@ -2,51 +2,60 @@
 
 class Student
 {
-    private string name;
+    private string _name;
     public int Age { get; set; }
+
     public Student(string name, int Age)
     {
-        this.name = name;
+        this._name = name;
         this.Age = Age;
     }
 
-    public Student(string _name)
+    public Student(string name)
     {
-        this.name = _name;
+        this._name = name;
         Age = 0;
     }
 
-    public void WriteInfo()
+    public string WriteInfo()
     {
-        Console.WriteLine("Студент " + name + ", возраст " + Age);
+        return "Студент " + _name + ", возраст " + Age;
     }
+
+    // Метод BecomeOlder увеличивает возраст на 1
     public void BecomeOlder()
     {
-        Console.WriteLine("Студент " + name + ", возраст " + (Age + 1));
+        Age++;
+        Console.WriteLine("Студент " + _name + ", возраст " + Age);
     }
 
     public string GetName()
     {
-        return name;
-    }
-    public void SetName(string _name)
-    {
-        this.name = _name;
+        return _name;
     }
 
+    public void SetName(string name)
+    {
+        this._name = name;
+    }
 
     static void Main(string[] args)
     {
         Student Oleg = new("Олег", 25);
         Student Venya = new("Веня");
 
-        Oleg.WriteInfo();
+        // Демонстрация работы WriteInfo
+        Console.WriteLine(Oleg.WriteInfo());
         Oleg.BecomeOlder();
 
-        Venya.WriteInfo();
+        Console.WriteLine(Venya.WriteInfo());
         Oleg.SetName("Рома");
+
+        // Повторный вызов после изменения имени
+        Console.WriteLine(Oleg.WriteInfo());
         Oleg.BecomeOlder();
 
+        // Демонстрация работы геттера GetName
+        Console.WriteLine("Имя студента: " + Oleg.GetName());
     }
 }
-
