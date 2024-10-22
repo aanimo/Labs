@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitoring", "SystemMonitoring.csproj", "{4ADBE17E-A21E-4186-8FCC-5923580A764F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplexMetodGUI", "SimplexMetodGUI.csproj", "{B2FA9F8A-A5F4-4850-A60D-67F64E5ACE34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4ADBE17E-A21E-4186-8FCC-5923580A764F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ADBE17E-A21E-4186-8FCC-5923580A764F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ADBE17E-A21E-4186-8FCC-5923580A764F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ADBE17E-A21E-4186-8FCC-5923580A764F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FA9F8A-A5F4-4850-A60D-67F64E5ACE34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FA9F8A-A5F4-4850-A60D-67F64E5ACE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FA9F8A-A5F4-4850-A60D-67F64E5ACE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FA9F8A-A5F4-4850-A60D-67F64E5ACE34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9A2010AB-12E7-4E32-BC59-0FD650793501}
+		SolutionGuid = {E563538E-2366-47BF-8CBE-CA32A28ACDA3}
 	EndGlobalSection
 EndGlobal
