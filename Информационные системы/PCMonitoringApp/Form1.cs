@@ -364,7 +364,6 @@ namespace PCMonitoringApp
                 }
             };
         }
-
         private void LogMetrics(float cpuUsage, float usedRam, float totalRam)
         {
             try
