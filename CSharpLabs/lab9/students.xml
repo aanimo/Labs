@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Student>
+    <FullName>Шмалько Иван</FullName>
+    <StudentId>48195781</StudentId>
+    <FieldOfStudy>Физика</FieldOfStudy>
+  </Student>
+  <Student>
+    <FullName>Уткин Венедикт</FullName>
+    <StudentId>12476497</StudentId>
+    <FieldOfStudy>Информатика</FieldOfStudy>
+  </Student>
+</ArrayOfStudent>
