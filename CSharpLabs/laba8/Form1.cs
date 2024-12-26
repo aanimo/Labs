@@ -70,7 +70,12 @@ namespace laba8
 
         private void DataGridViewStudents_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridViewStudents.CurrentRow == null) return;
+            if (dataGridViewStudents.CurrentRow == null || dataGridViewStudents.CurrentRow.DataBoundItem == null)
+            {
+                // Если строка не выбрана, очищаем поля
+                ClearInputFields();
+                return;
+            }
 
             var student = dataGridViewStudents.CurrentRow.DataBoundItem as Student;
             if (student == null) return;
@@ -138,5 +143,9 @@ namespace laba8
             studentBindingSource.ResetBindings(false);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+        }
     }
 }
