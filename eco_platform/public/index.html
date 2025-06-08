@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Экологическая платформа</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f8f5;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      border: none;
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab:hover {
+      background-color: #1b5e20;
+    }
+
+    .tab.active {
+      background-color: #1b5e20;
+    }
+
+    .tab-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    form input,
+    form select,
+    form button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #388e3c;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      background: #e8f5e9;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌱 Экологическая платформа</h1>
+  </header>
+
+  <!--вкладки-->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('waste-types')">Типы отходов</button>
+    <button class="tab" onclick="showTab('collection-points')">Пункты приема</button>
+    <button class="tab" onclick="showTab('reports')">Добавить отчет</button>
+    <button class="tab" onclick="showTab('stats')">Статистика</button>
+    <button class="tab" onclick="showTab('achievements')">Достижения</button>
+  </div>
+
+  <!--типы отходов-->
+  <section id="waste-types" class="tab-content active">
+    <h2>🗑️ Типы отходов</h2>
+    <ul id="wasteTypesList"></ul>
+
+    <h3>➕ Добавить новый тип отходов</h3>
+    <form id="addWasteTypeForm">
+      <input type="text" id="name" placeholder="Название" required />
+      <input type="number" id="ecoPoints" placeholder="Очки за кг" required />
+      <button type="submit">Добавить</button>
+    </form>
+
+    <!-- форма редактирования -->
+    <h3>✏️ Редактировать тип отхода</h3>
+    <form id="editWasteTypeForm" class="hidden">
+      <input type="hidden" id="editId" />
+      <input type="text" id="editName" placeholder="Новое название" required />
+      <input type="number" id="editEcoPoints" placeholder="Новые очки за кг" required />
+      <button type="submit">Сохранить изменения</button>
+      <button type="button" onclick="cancelEdit()">Отмена</button>
+    </form>
+  </section>
+
+  <!-- пункты приема -->
+  <section id="collection-points" class="tab-content">
+    <h2>🔍 Пункты приема</h2>
+    <form id="searchCollectionPointsForm">
+      <input type="text" id="searchAddress" placeholder="Адрес или название" />
+      <button type="submit">Найти</button>
+    </form>
+    <ul id="collectionPointsList"></ul>
+  </section>
+
+  <!-- отчеты -->
+  <section id="reports" class="tab-content">
+    <h2>📦 Добавить отчет об утилизации</h2>
+    <form id="addReportForm">
+      <select id="reportUserId" required></select><br/>
+      <select id="reportWasteTypeId" required></select><br/>
+      <input type="number" id="reportWeightKg" placeholder="Вес (кг)" min="0.1" step="0.1" required /><br/>
+      <button type="submit">Добавить отчет</button>
+    </form>
+  </section>
+
+  <!-- статистика -->
+  <section id="stats" class="tab-content">
+    <h2>📊 Статистика пользователей</h2>
+    <div id="userStatsContainer"></div>
+  </section>
+
+  <!-- достижения-->
+  <section id="achievements" class="tab-content">
+    <h2>🏆 Достижения</h2>
+
+    <ul id="achievementsList"></ul>
+
+    <h3>➕ Добавить новое достижение</h3>
+    <form id="addAchievementForm">
+      <input type="text" id="achievementTitle" placeholder="Название" required />
+      <input type="text" id="achievementDescription" placeholder="Описание (необязательно)" />
+      <input type="number" id="achievementPoints" placeholder="Баллы для получения" required />
+      <button type="submit">Добавить</button>
+    </form>
+
+    <h3>✏️ Редактировать достижение</h3>
+    <form id="editAchievementForm" class="hidden">
+      <input type="hidden" id="editAchievementId" />
+      <input type="text" id="editAchievementTitle" placeholder="Новое название" required />
+      <input type="text" id="editAchievementDescription" placeholder="Новое описание" />
+      <input type="number" id="editAchievementPoints" placeholder="Новые баллы" required />
+      <button type="submit">Сохранить</button>
+      <button type="button" onclick="cancelEditAchievement()">Отмена</button>
+    </form>
+  </section>
+
+  <script src="app.js"></script>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+
+      document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>

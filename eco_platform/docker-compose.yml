@@ -1,0 +1,43 @@
+name: eco_platform
+
+services:
+  eco-api:
+    image: apocbaha/eco-platform-api:latest
+    container_name: eco-api
+    ports:
+      - "${PORT}:3000"
+    environment:
+      POSTGRES_HOST: eco-db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: 5432
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - eco-db
+    networks:
+      - eco-network
+
+  eco-db:
+    image: postgres:16
+    container_name: eco-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - eco-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - eco-network
+
+volumes:
+  eco-data:
+
+networks:
+  eco-network:
+    driver: bridge
