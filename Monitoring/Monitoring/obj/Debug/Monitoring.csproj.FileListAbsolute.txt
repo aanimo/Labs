@@ -1,0 +1,10 @@
+C:\Users\bahek\source\repos\Monitoring\Monitoring\bin\Debug\Monitoring.exe.config
+C:\Users\bahek\source\repos\Monitoring\Monitoring\bin\Debug\Monitoring.exe
+C:\Users\bahek\source\repos\Monitoring\Monitoring\bin\Debug\Monitoring.pdb
+C:\Users\bahek\source\repos\Monitoring\Monitoring\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.csproj.AssemblyReference.cache
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.csproj.CoreCompileInputs.cache
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.csproj.Up2Date
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.exe
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.pdb
+C:\Users\bahek\source\repos\Monitoring\Monitoring\obj\Debug\Monitoring.exe.config
